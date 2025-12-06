@@ -8,6 +8,7 @@ export function useDebounce<T extends (...args: any[]) => any>(
 ): T {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const callbackRef = useRef(callback);
+
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);

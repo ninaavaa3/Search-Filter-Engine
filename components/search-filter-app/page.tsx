@@ -1,13 +1,10 @@
 "use client";
 import { useDebounce } from "@/hooks/useDebouncing";
 import { Product, products } from "@/types/product";
-import  {
-  useState,
-  useCallback,
-  useMemo,
-} from "react";
-import ProductFilters from "./ProductFilters";
-import Card from "./cards";
+import { useState, useCallback, useMemo } from "react";
+import ProductFilters from "./product-filters";
+
+import SearchResult from "./search-result";
 
 interface FilterOptions {
   search: string;
@@ -51,7 +48,6 @@ const filterProducts = (
 };
 
 export default function SearchFilterApp() {
-  
   const allProducts = products;
   const [filters, setFilters] = useState<FilterOptions>({
     search: "",
@@ -84,7 +80,7 @@ export default function SearchFilterApp() {
     },
     []
   );
-  
+
   const handleClearFilters = useCallback(() => {
     setFilters({
       search: "",
@@ -93,7 +89,6 @@ export default function SearchFilterApp() {
       maxPrice: null,
       status: null,
     });
-
   }, []);
 
   return (
@@ -108,7 +103,7 @@ export default function SearchFilterApp() {
         />
 
         <div className="grid grid-cols-1 gap-4">
-          <Card products={filteredProducts} />
+          <SearchResult products={filteredProducts} />
         </div>
       </div>
     </div>

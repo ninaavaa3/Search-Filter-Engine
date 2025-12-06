@@ -6,15 +6,16 @@ export default function ProductFilters({
   onFilterChange,
   onClearFilters,
   onSearchChange,
-}:{categories: string[];
+}: {
+  categories: string[];
   filters: FilterOptions;
   onFilterChange: (field: keyof FilterOptions, value: any) => void;
   onClearFilters: () => void;
-  onSearchChange: (value: string) => void }){
+  onSearchChange: (value: string) => void;
+}) {
   return (
     <div className="p-6 bg-stone-100 rounded-lg border border-gray-300 h-full">
       <div className="grid grid-cols-1 gap-10">
-     
         <div className="space-y-1">
           <label className="block text-sm font-medium text-gray-700">
             Search
@@ -49,7 +50,6 @@ export default function ProductFilters({
               </select>
             </div>
 
-     
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">
                 Price Range
@@ -82,7 +82,6 @@ export default function ProductFilters({
               </div>
             </div>
 
-         
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">
                 Status
@@ -118,7 +117,6 @@ export default function ProductFilters({
               </div>
             </div>
 
-        
             <div className="flex justify-end w-full">
               <button
                 onClick={onClearFilters}
@@ -132,4 +130,4 @@ export default function ProductFilters({
       </div>
     </div>
   );
-};
+}
