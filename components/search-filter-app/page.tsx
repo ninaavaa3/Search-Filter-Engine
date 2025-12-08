@@ -22,6 +22,7 @@ const filterProducts = (
   products: Product[],
   filters: FilterOptions
 ): Product[] => {
+  console.log("Filtering products with filters:", filters);
   const searchTerm = normalizeSearch(filters.search);
   const hasSearch = searchTerm.length > 0;
   return products.filter((product) => {
@@ -65,9 +66,9 @@ export default function SearchFilterApp() {
     return filterProducts(allProducts, filters);
   }, [allProducts, filters]);
 
-  const performSearch = (value: string) => {
-    setFilters((prev) => ({ ...prev, search: value }));
-  };
+const performSearch = useCallback((value: string) => {
+  setFilters((prev) => ({ ...prev, search: value }));
+}, []);
 
   const debouncedSearch = useDebounce(performSearch, 500);
   const handleSearchChange = (value: string) => {
@@ -80,6 +81,7 @@ export default function SearchFilterApp() {
     },
     []
   );
+  
 
   const handleClearFilters = useCallback(() => {
     setFilters({
